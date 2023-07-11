@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Game.css'
 import { Score } from './Score'
 import { Choices } from './Choices'
@@ -10,6 +10,37 @@ export const Game = () => {
   const [comScore, setComScore] = useState(0)
   const [myChoice, setMyChoice] = useState(null)
   const [comChoice, setComChoice] = useState(null)
+  const [result, setResult] = useState("")
+
+  useEffect(() => {
+    setMyChoice(myChoice)
+    setComChoice(comChoice)
+    resolveMatch()
+  }, [myChoice, comChoice])
+
+  const resolveMatch = () => {
+    if(isWon()) {win()}
+    else if (isLost()) {lose()}
+    else {setResult("Empate")}
+  }
+
+  const isWon = () => {
+    return myChoice && myChoice.beats.includes(comChoice.id)
+  }
+
+  const isLost = () => {
+    return comChoice && comChoice.beats.includes(myChoice.id)
+  }
+
+  const win = () => {
+    setResult("Ganaste")
+    setMyScore(myScore + 1) 
+  }
+
+  const lose = () => {
+    setResult("Perdiste")
+    setComScore(comScore + 1)
+  }
 
   const reset = () => {
     setMyScore(0)
@@ -21,14 +52,14 @@ export const Game = () => {
   const handlePlay = (myPick, comPick) => {
     setMyChoice(myPick)
     setComChoice(comPick)
-    console.log(myPick + comPick)
   }
   
   return (
     <div className='main-container'>
-      <Score/>
-      <Choices handlePlay = {()=>handlePlay}/>
+      <Score myScore={myScore} comScore={comScore}/>
+      <Choices handlePlay={handlePlay}/>
       <Boton/>
+      {result && <h3>{result}</h3>}
     </div>
   )
 }

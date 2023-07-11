@@ -9,9 +9,6 @@ import { Element } from './Element';
 
 export const Choices = ({handlePlay}) => {
 
-  const [myPick, setMyPick] = useState(null)
-  const [comPick, setComPick] = useState(null)
-
   const lizard = {id: 'lagarto', image: lagartoImage, beats: ['spock', 'papel']}
   const paper = {id: 'papel',    image: papelImage,   beats: ['spock', 'piedra']}
   const rock = {id: 'piedra',    image: piedraImage,  beats: ['tijera', 'lagarto']}
@@ -27,20 +24,16 @@ export const Choices = ({handlePlay}) => {
   ]
 
   const getComPick = () => {
-    let pick = choices[Math.floor(Math.random() * choices.length)]; 
-    setComPick(pick)
+    return choices[Math.floor(Math.random() * choices.length)]
+  
   }
 
   const getMyPick = (id) => {
-    let pick = choices.find(i => i.id === id)
-    setMyPick(pick)
+    return choices.find(i => i.id === id)
   }
 
   const play = (id) => {
-    getMyPick(id)
-    getComPick()
-    handlePlay(myPick, comPick)
-    console.log(myPick.id + comPick.id)
+    handlePlay(getMyPick(id), getComPick())
   }
 
   return (
