@@ -1,6 +1,7 @@
 .score-container {
     padding: 10px;
-    width: 80%;
+    min-width: 130px;
+    
     border-style: solid;
     border-color: #ffffff;
     border-width: 2px;
