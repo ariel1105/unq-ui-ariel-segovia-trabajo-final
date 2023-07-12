@@ -35,3 +35,10 @@
     width: 80px; 
     justify-items: unsafe;
 }
+
+@media (max-width: 768px) {
+    .elements-container{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

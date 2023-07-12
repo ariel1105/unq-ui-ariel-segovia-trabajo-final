@@ -15,7 +15,7 @@ export const Score = ({myScore, comScore, reset}) => {
           <span className="score">{comScore}</span>
         </li>
       </ul>
-      <Boton action = {reset}/>
+      <Boton action = {reset} description={"Reiniciar"}/>
     </>
   )
 }

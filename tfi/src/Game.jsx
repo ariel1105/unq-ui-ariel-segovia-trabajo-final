@@ -4,6 +4,7 @@ import { Score } from './score/Score'
 import { Choices } from './picks/Choices'
 import { Boton } from './score/Boton'
 import { Result } from './result/Result'
+import { Rules } from './rules/Rules'
 
 export const Game = () => {
 
@@ -12,6 +13,7 @@ export const Game = () => {
   const [myChoice, setMyChoice] = useState(null)
   const [comChoice, setComChoice] = useState(null)
   const [result, setResult] = useState("")
+  const [showRules, setShowRules] = useState(false)
 
   useEffect(() => {
     setMyChoice(myChoice)
@@ -57,13 +59,25 @@ export const Game = () => {
     setMyChoice(myPick)
     setComChoice(comPick)
   }
+
+  const closeRules = () => {
+    setShowRules(false)
+  }
+
+  const openRules = () => {
+    setShowRules(true)
+  }
   
   return (
     <div className='main-container'>
+      {showRules && (
+        <Rules close={closeRules}/>
+      )}
       <h1>Piedra, Papel, Tijera, Lagarto o Spock</h1>
       <Score myScore={myScore} comScore={comScore} reset={reset}/>
       <Choices handlePlay={handlePlay}/>
       <Result result={result} myChoice={myChoice} comChoice={comChoice}/>
+      <Boton action={openRules} description={"Reglas"}/>
     </div>
   )
 }
