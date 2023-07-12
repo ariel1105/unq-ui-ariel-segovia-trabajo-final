@@ -1,5 +1,5 @@
 import React from 'react'
-import '../picks/Choices.css'
+import './Result.css'
 
 export const ResultElement = ({title, pick}) => {
   return (

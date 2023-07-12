@@ -27,14 +27,6 @@
     display: flex;
     flex-direction: row;
 }
-.simple-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    width: 80px; 
-    justify-items: unsafe;
-}
 
 @media (max-width: 768px) {
     .elements-container{
