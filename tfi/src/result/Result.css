@@ -1,0 +1,10 @@
+.result-container{
+    display: flex;
+    flex-direction: row;
+    border-color: #ffffff;
+    border-style: solid;
+    border-width: 2px;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 20px;
+}

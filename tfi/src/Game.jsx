@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './Game.css'
-import { Score } from './Score'
-import { Choices } from './Choices'
-import { Boton } from './Boton'
+import { Score } from './score/Score'
+import { Choices } from './picks/Choices'
+import { Boton } from './score/Boton'
+import { Result } from './result/Result'
 
 export const Game = () => {
 
@@ -15,7 +16,9 @@ export const Game = () => {
   useEffect(() => {
     setMyChoice(myChoice)
     setComChoice(comChoice)
-    resolveMatch()
+    if(myChoice && comChoice){
+      resolveMatch()
+    }
   }, [myChoice, comChoice])
 
   const resolveMatch = () => {
@@ -47,6 +50,7 @@ export const Game = () => {
     setComScore(0)
     setMyChoice(null)
     setComChoice(null)
+    setResult("")
   }
 
   const handlePlay = (myPick, comPick) => {
@@ -56,10 +60,10 @@ export const Game = () => {
   
   return (
     <div className='main-container'>
-      <Score myScore={myScore} comScore={comScore}/>
+      <h1>Piedra, Papel, Tijera, Lagarto o Spock</h1>
+      <Score myScore={myScore} comScore={comScore} reset={reset}/>
       <Choices handlePlay={handlePlay}/>
-      <Boton/>
-      {result && <h3>{result}</h3>}
+      <Result result={result} myChoice={myChoice} comChoice={comChoice}/>
     </div>
   )
 }

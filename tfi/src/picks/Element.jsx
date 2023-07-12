@@ -1,14 +1,14 @@
 import React from 'react'
 import './Choices.css'
 
-export const Element = ({element, onClick}) => {
+export const Element = ({element, pick}) => {
 
   const handleClick= () => {
-    onClick()
+    pick()
   }
 
   return (
-    <div className="element-container" onClick={handleClick}>
+    <div className="action-box" onClick={handleClick}>
         <img src={element.image} alt="Piedra" className="element-image"/>
         {element.id}
     </div>

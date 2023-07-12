@@ -1,0 +1,26 @@
+.score-container {
+  padding: 10px;
+  min-width: 130px;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 2px;
+  border-radius: 10px;
+  background-color: transparent;
+  margin-top: 2%;
+  list-style-type: none;
+}
+
+.score-container li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score-container .player {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.score-container .score {
+  color: #ffffff;
+}
